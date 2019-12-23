@@ -12,4 +12,9 @@ class HtmlEscape
     {
         return htmlentities($str, ENT_QUOTES, 'utf-8');
     }
+        
+    public static function htmlentities($str)
+    {
+        return htmlentities($str, ENT_QUOTES, 'utf-8');
+    }
 }
