@@ -18,6 +18,7 @@ class EscapedHtml
         $this->html = $html;
     }
 
+    #[\Override]
     public function __toString()
     {
         return htmlentities($this->html, ENT_QUOTES, 'utf-8');

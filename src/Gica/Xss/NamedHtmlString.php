@@ -29,6 +29,7 @@ class NamedHtmlString
         $this->format = $format;
     }
 
+    #[\Override]
     public function __toString()
     {
         $safeParameters = array_map(fn($unsafe) => htmlentities($unsafe, ENT_QUOTES, 'utf-8'), $this->parameters);
