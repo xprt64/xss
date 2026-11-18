@@ -31,13 +31,9 @@ class NamedHtmlString
 
     public function __toString()
     {
-        $safeParameters = array_map(function ($unsafe) {
-            return htmlentities($unsafe, ENT_QUOTES, 'utf-8');
-        }, $this->parameters);
+        $safeParameters = array_map(fn($unsafe) => htmlentities($unsafe, ENT_QUOTES, 'utf-8'), $this->parameters);
 
-        $keys = array_map(function ($key) {
-            return '{' . $key . '}';
-        }, array_keys($safeParameters));
+        $keys = array_map(fn($key) => '{' . $key . '}', array_keys($safeParameters));
 
         return (string)str_replace($keys, $safeParameters, $this->format);
     }

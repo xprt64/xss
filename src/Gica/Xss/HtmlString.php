@@ -32,12 +32,10 @@ class HtmlString
 
     public function __toString()
     {
-        $safeParameters = array_map(function($unsafe){
-            return htmlentities($unsafe, ENT_QUOTES, 'utf-8');
-        }, $this->parameters);
+        $safeParameters = array_map(fn($unsafe) => htmlentities($unsafe, ENT_QUOTES, 'utf-8'), $this->parameters);
 
         array_unshift($safeParameters, $this->format);
 
-        return (string)call_user_func_array('sprintf', $safeParameters);
+        return (string)call_user_func_array(sprintf(...), $safeParameters);
     }
 }
